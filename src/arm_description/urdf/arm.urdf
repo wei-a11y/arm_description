@@ -436,7 +436,7 @@
     name="camera_arm_joint"
     type="fixed">
     <origin
-      xyz="0.0630000000000002 0 0"
+      xyz="0.0380000000000002 0 0"
       rpy="0 0 0" />
     <parent
       link="wrist_link_3" />
@@ -489,7 +489,7 @@
     name="fork_joint_L"
     type="fixed">
     <origin
-      xyz="0.0645000000000001 -0.0544327264438395 0"
+      xyz="0.039500000000001 -0.0544327264438395 0"
       rpy="0 0 0" />
     <parent
       link="wrist_link_3" />
@@ -542,7 +542,7 @@
     name="fork_joint_R"
     type="fixed">
     <origin
-      xyz="0.0645000000000003 0.0544327264438282 0"
+      xyz="0.0395000000000003 0.0544327264438282 0"
       rpy="0 0 0" />
     <parent
       link="wrist_link_3" />

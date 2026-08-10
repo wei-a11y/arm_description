@@ -1,0 +1,9 @@
+# Default initial positions for arm_description's ros2_control fake system
+
+initial_positions:
+  arm_joint_12: 0
+  arm_wrist_joint: 0
+  base_joint: 0
+  shoulder_joint: 0
+  wrist_joint_12: 0
+  wrist_joint_23: 0
