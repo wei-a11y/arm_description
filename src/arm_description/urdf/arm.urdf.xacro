@@ -2,8 +2,13 @@
 <!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
-<robot
-  name="arm_description">
+
+
+
+<robot name="arm_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find arm_description)/urdf/arm_description.ros2_control.xacro" />
+  
   <link
     name="base_link">
     <inertial>
@@ -551,4 +556,7 @@
     <axis
       xyz="0 0 0" />
   </joint>
+  <xacro:arm_description_ros2_control
+  name="Arm"
+  initial_positions_file="" />
 </robot>

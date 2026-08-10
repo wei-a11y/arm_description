@@ -5,7 +5,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     package_share = Path(get_package_share_directory('arm_description'))
-    urdf_file = package_share / 'urdf' / 'arm.urdf'
+    urdf_file = package_share / 'urdf' / 'arm.urdf.xacro'
     robot_description = urdf_file.read_text(encoding='utf-8')
 
     return LaunchDescription([
