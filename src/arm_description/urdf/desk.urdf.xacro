@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="desk">
+    <link
+      name="desk_link">
+      <inertial>
+        <origin
+          xyz="0.2633 -1.3648E-06 0.41758"
+          rpy="0 0 0" />
+        <mass
+          value="175.57" />
+        <inertia
+          ixx="15.115"
+          ixy="0.00035798"
+          ixz="0.18408"
+          iyy="15.317"
+          iyz="-3.2904E-05"
+          izz="11.622" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/desk_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/desk_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <link
+      name="place_1_link">
+      <inertial>
+        <origin
+          xyz="2.7756E-17 0 0.001"
+          rpy="0 0 0" />
+        <mass
+          value="0.0162" />
+        <inertia
+          ixx="1.094E-05"
+          ixy="1.6756E-21"
+          ixz="-6.3137E-38"
+          iyy="1.094E-05"
+          iyz="-4.191E-24"
+          izz="2.187E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/place_1_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.92549 0.92549 0.92549 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/place_1_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="place_1_joint"
+      type="fixed">
+      <origin
+        xyz="0.229416554465602 0.19 0.478"
+        rpy="0 0 1.5707963267949" />
+      <parent
+        link="desk_link" />
+      <child
+        link="place_1_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="place_2_link">
+      <inertial>
+        <origin
+          xyz="-2.7756E-17 -2.7756E-17 0.001"
+          rpy="0 0 0" />
+        <mass
+          value="0.0162" />
+        <inertia
+          ixx="1.094E-05"
+          ixy="5.1772E-22"
+          ixz="9.9262E-24"
+          iyy="1.094E-05"
+          iyz="2.9779E-23"
+          izz="2.187E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/place_2_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.92549 0.92549 0.92549 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/place_2_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="place_2_joint"
+      type="fixed">
+      <origin
+        xyz="0.229416554465603 -0.19 0.478"
+        rpy="0 0 1.5707963267949" />
+      <parent
+        link="desk_link" />
+      <child
+        link="place_2_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="place_3_link">
+      <inertial>
+        <origin
+          xyz="2.77555756156289E-17 0 0.00100000000000001"
+          rpy="0 0 0" />
+        <mass
+          value="0.0162" />
+        <inertia
+          ixx="1.09404E-05"
+          ixy="-1.81238906016781E-21"
+          ixz="3.30258329236758E-21"
+          iyy="1.09404E-05"
+          iyz="-1.36657436401424E-23"
+          izz="2.187E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/place_3_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.925490196078431 0.925490196078431 0.925490196078431 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/place_3_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="place_3_joint"
+      type="fixed">
+      <origin
+        xyz="0.229416554465602 0.19 0.078"
+        rpy="0 0 1.5707963267949" />
+      <parent
+        link="desk_link" />
+      <child
+        link="place_3_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="place_4_link">
+      <inertial>
+        <origin
+          xyz="0 -2.77555756156289E-17 0.001"
+          rpy="0 0 0" />
+        <mass
+          value="0.0162" />
+        <inertia
+          ixx="1.09404E-05"
+          ixy="2.97655585495305E-21"
+          ixz="-1.57211905468552E-22"
+          iyy="1.09404E-05"
+          iyz="5.84871176078965E-23"
+          izz="2.187E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/place_4_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.925490196078431 0.925490196078431 0.925490196078431 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/place_4_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="place_4_joint"
+      type="fixed">
+      <origin
+        xyz="0.229416554465603 -0.19 0.0779999999999999"
+        rpy="0 0 1.5707963267949" />
+      <parent
+        link="desk_link" />
+      <child
+        link="place_4_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="bolck_link">
+      <inertial>
+        <origin
+          xyz="0 0 0.035"
+          rpy="0 0 0" />
+        <mass
+          value="0.7" />
+        <inertia
+          ixx="0.00086917"
+          ixy="8.4279E-20"
+          ixz="1.4167E-21"
+          iyy="0.00086917"
+          iyz="5.1428E-36"
+          izz="0.0011667" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/bolck_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/bolck_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="block_joint"
+      type="fixed">
+      <origin
+        xyz="-0.25 0.0199999999999995 0.00499999999999999"
+        rpy="0 0 0" />
+      <parent
+        link="desk_link" />
+      <child
+        link="bolck_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+  </xacro:macro>
+</robot>

@@ -20,8 +20,8 @@ def generate_launch_description():
         get_package_share_directory("moveit_config")
     )
 
-    urdf_path = arm_description_share / "urdf" / "arm.urdf.xacro"
-    # rviz_config_path = arm_description_share / "rviz" / "arm.rviz"
+    urdf_path = arm_description_share / "urdf" / "all.urdf.xacro"
+    rviz_config_path = robot_bringup_share / "rviz" / "moveit.rviz"
     controllers_config_path = (
         robot_bringup_share / "config" / "ros2_controllers.yaml"
     )
@@ -69,7 +69,7 @@ def generate_launch_description():
                 package="rviz2",
                 executable="rviz2",
                 output="screen",
-                # arguments=["-d", str(rviz_config_path)],
+                arguments=["-d", str(rviz_config_path)],
             ),
         ]
     )

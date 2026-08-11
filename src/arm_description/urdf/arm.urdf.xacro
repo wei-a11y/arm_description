@@ -5,8 +5,7 @@
 
 
 
-<robot name="arm_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
-
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find arm_description)/urdf/arm_description.ros2_control.xacro" />
   
   <link
@@ -31,7 +30,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/base_link.STL" />
+          filename="package://arm_description/meshes/arm/base_link.STL" />
       </geometry>
       <material
         name="">
@@ -45,7 +44,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/base_link.STL" />
+          filename="package://arm_description/meshes/arm/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -71,7 +70,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/shoulder_link.STL" />
+          filename="package://arm_description/meshes/arm/shoulder_link.STL" />
       </geometry>
       <material
         name="">
@@ -85,7 +84,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/shoulder_link.STL" />
+          filename="package://arm_description/meshes/arm/shoulder_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -129,7 +128,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/arm_link_1.STL" />
+          filename="package://arm_description/meshes/arm/arm_link_1.STL" />
       </geometry>
       <material
         name="">
@@ -143,7 +142,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/arm_link_1.STL" />
+          filename="package://arm_description/meshes/arm/arm_link_1.STL" />
       </geometry>
     </collision>
   </link>
@@ -187,7 +186,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/arm_link_2.STL" />
+          filename="package://arm_description/meshes/arm/arm_link_2.STL" />
       </geometry>
       <material
         name="">
@@ -201,7 +200,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/arm_link_2.STL" />
+          filename="package://arm_description/meshes/arm/arm_link_2.STL" />
       </geometry>
     </collision>
   </link>
@@ -245,7 +244,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/wrist_link_1.STL" />
+          filename="package://arm_description/meshes/arm/wrist_link_1.STL" />
       </geometry>
       <material
         name="">
@@ -259,7 +258,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/wrist_link_1.STL" />
+          filename="package://arm_description/meshes/arm/wrist_link_1.STL" />
       </geometry>
     </collision>
   </link>
@@ -303,7 +302,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/wrist_link_2.STL" />
+          filename="package://arm_description/meshes/arm/wrist_link_2.STL" />
       </geometry>
       <material
         name="">
@@ -317,7 +316,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/wrist_link_2.STL" />
+          filename="package://arm_description/meshes/arm/wrist_link_2.STL" />
       </geometry>
     </collision>
   </link>
@@ -361,7 +360,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/wrist_link_3.STL" />
+          filename="package://arm_description/meshes/arm/wrist_link_3.STL" />
       </geometry>
       <material
         name="">
@@ -375,7 +374,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/wrist_link_3.STL" />
+          filename="package://arm_description/meshes/arm/wrist_link_3.STL" />
       </geometry>
     </collision>
   </link>
@@ -419,7 +418,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/camera_arm_link.STL" />
+          filename="package://arm_description/meshes/arm/camera_arm_link.STL" />
       </geometry>
       <material
         name="">
@@ -433,7 +432,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/camera_arm_link.STL" />
+          filename="package://arm_description/meshes/arm/camera_arm_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -472,7 +471,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/fork_link_L.STL" />
+          filename="package://arm_description/meshes/arm/fork_link_L.STL" />
       </geometry>
       <material
         name="">
@@ -486,7 +485,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/fork_link_L.STL" />
+          filename="package://arm_description/meshes/arm/fork_link_L.STL" />
       </geometry>
     </collision>
   </link>
@@ -525,7 +524,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/fork_link_R.STL" />
+          filename="package://arm_description/meshes/arm/fork_link_R.STL" />
       </geometry>
       <material
         name="">
@@ -539,7 +538,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://arm_description/meshes/fork_link_R.STL" />
+          filename="package://arm_description/meshes/arm/fork_link_R.STL" />
       </geometry>
     </collision>
   </link>
