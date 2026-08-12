@@ -76,8 +76,8 @@ def generate_launch_description():
                 executable="static_transform_publisher",
                 name="world_to_base_link",
                 arguments=[
-                    "--x", "0.25",
-                    "--y", "0.02",
+                    "--x", "-0.25",
+                    "--y", "-0.02",
                     "--z", "0.075",
                     "--roll", "0.0",
                     "--pitch", "0.0",

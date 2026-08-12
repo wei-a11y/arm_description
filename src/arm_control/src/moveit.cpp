@@ -4,7 +4,44 @@
 #include <geometry_msgs/msg/pose.hpp>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 
+#include <boost/variant/get.hpp>
+#include <geometric_shapes/mesh_operations.h>
+#include <geometric_shapes/shape_operations.h>
+#include <shape_msgs/msg/mesh.hpp>
+#include <std_msgs/msg/color_rgba.hpp>
+#include <string>
 
+bool loadMeshMessage(const std::string& resource, shape_msgs::msg::Mesh& mesh_message)
+{
+    shapes::ShapePtr mesh_shape
+    (
+        shapes::createMeshFromResource(resource)
+    );
+
+    if (!mesh_shape)
+    {
+        return false;
+    }
+
+    shapes::ShapeMsg shape_message;
+
+    if (!shapes::constructMsgFromShape(
+            mesh_shape.get(),
+            shape_message))
+    {
+        return false;
+    }
+
+    auto* converted_mesh = boost::get<shape_msgs::msg::Mesh>(&shape_message);
+
+    if (converted_mesh == nullptr)
+    {
+        return false;
+    }
+
+    mesh_message = *converted_mesh;
+    return true;
+}
 
 int main(int argc, char **argv)
 {
@@ -21,46 +58,105 @@ int main(int argc, char **argv)
         executor.spin();
     });
     // moveit initialization
-    shape_msgs::msg::SolidPrimitive desk_shape;
-    desk_shape.type = shape_msgs::msg::SolidPrimitive::BOX;
-    desk_shape.dimensions = {0.8, 0.6, 0.05};
+    //使用stl添加desk模型到规划场景中
+    moveit::planning_interface::PlanningSceneInterface
+        planning_scene_interface;
 
-    moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
     moveit_msgs::msg::CollisionObject desk;
     desk.id = "desk";
     desk.header.frame_id = "world";
-    
+
+    shape_msgs::msg::Mesh desk_mesh;
+
+    if (!loadMeshMessage(
+            "package://arm_description/meshes/desk/desk_link.STL",
+            desk_mesh))
+    {
+        RCLCPP_ERROR(
+            node->get_logger(),
+            "Failed to load desk STL"
+        );
+
+        rclcpp::shutdown();
+        spinner.join();
+        return 1;
+    }
+
     geometry_msgs::msg::Pose desk_pose;
+    desk_pose.orientation.x = 0.0;
+    desk_pose.orientation.y = 0.0;
+    desk_pose.orientation.z = 0.0;
     desk_pose.orientation.w = 1.0;
+
     desk_pose.position.x = 0.0;
     desk_pose.position.y = 0.0;
     desk_pose.position.z = 0.0;
-    
-    desk.primitives.push_back(desk_shape);
-    desk.primitive_poses.push_back(desk_pose);
-    desk.operation = desk.ADD;
-    
-    planning_scene_interface.applyCollisionObject(desk);
-    
-    shape_msgs::msg::SolidPrimitive pallet_shape;
-    pallet_shape.type = shape_msgs::msg::SolidPrimitive::BOX;
-    pallet_shape.dimensions = {0.20, 0.18, 0.034};
 
+    desk.meshes.push_back(desk_mesh);
+    desk.mesh_poses.push_back(desk_pose);
+    desk.operation = moveit_msgs::msg::CollisionObject::ADD;
+    std_msgs::msg::ColorRGBA desk_color;
+    desk_color.r = 0.79;
+    desk_color.g = 0.81;
+    desk_color.b = 0.93;
+    desk_color.a = 1.0;
+
+    if (!planning_scene_interface.applyCollisionObject(desk,desk_color))
+    {
+        RCLCPP_ERROR(
+            node->get_logger(),
+            "Failed to add desk to planning scene"
+        );
+    }
+    //
+    //使用stl添加pallet模型到规划场景中
     moveit_msgs::msg::CollisionObject pallet;
     pallet.id = "pallet";
     pallet.header.frame_id = "place_1";
 
+    shape_msgs::msg::Mesh pallet_mesh;
+
+    if (!loadMeshMessage(
+            "package://arm_description/meshes/pallet/pallet_link.STL",
+            pallet_mesh))
+    {
+        RCLCPP_ERROR(
+            node->get_logger(),
+            "Failed to load pallet STL"
+        );
+
+        rclcpp::shutdown();
+        spinner.join();
+        return 1;
+    }
     geometry_msgs::msg::Pose pallet_pose;
+    pallet_pose.orientation.x = 0.0;
+    pallet_pose.orientation.y = 0.0;
+    pallet_pose.orientation.z = 0.0;
+    pallet_pose.orientation.w = 1.0;
+    
     pallet_pose.position.x = 0.0;
     pallet_pose.position.y = 0.0;
     pallet_pose.position.z = 0.017;
-    pallet_pose.orientation.w = 1.0;
-
-    pallet.primitives.push_back(pallet_shape);
-    pallet.primitive_poses.push_back(pallet_pose);
+    
+    pallet.meshes.push_back(pallet_mesh);
+    pallet.mesh_poses.push_back(pallet_pose);
     pallet.operation = moveit_msgs::msg::CollisionObject::ADD;
+    //添加模型颜色
 
-    planning_scene_interface.applyCollisionObject(pallet);
+    std_msgs::msg::ColorRGBA pallet_color;
+    pallet_color.r = 0.5;
+    pallet_color.g = 0.5;
+    pallet_color.b = 0.5;
+    pallet_color.a = 1.0;
+
+    if (!planning_scene_interface.applyCollisionObject(pallet, pallet_color))
+    {
+        RCLCPP_ERROR(
+            node->get_logger(),
+            "Failed to add pallet to planning scene"
+        );
+    }
 
     auto arm = moveit::planning_interface::MoveGroupInterface(node, "arm");
 

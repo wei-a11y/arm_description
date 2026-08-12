@@ -10,6 +10,10 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(shape_msgs REQUIRED)
+find_package(moveit_msgs REQUIRED)
+find_package(geometric_shapes REQUIRED)
+find_package(std_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -21,6 +25,10 @@ ament_target_dependencies(
   rclcpp
   moveit_ros_planning_interface
   geometry_msgs
+  shape_msgs
+  moveit_msgs
+  geometric_shapes
+  std_msgs
 )
 install(TARGETS arm_control 
   DESTINATION lib/${PROJECT_NAME}
