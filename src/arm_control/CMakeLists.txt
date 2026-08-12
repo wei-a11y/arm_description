@@ -22,8 +22,12 @@ ament_target_dependencies(
   moveit_ros_planning_interface
   geometry_msgs
 )
-install(TARGETS arm_control
+install(TARGETS arm_control 
   DESTINATION lib/${PROJECT_NAME}
 )
+install(
+  DIRECTORY launch 
+  DESTINATION share/${PROJECT_NAME}
+  )
 
 ament_package()

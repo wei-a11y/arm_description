@@ -3,12 +3,12 @@
     <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
 
     <!-- Import arm_description urdf file -->
-    <xacro:include filename="$(find arm_description)/urdf/arm.urdf" />
+    <xacro:include filename="$(find arm_description)/urdf/arm.urdf.xacro" />
 
     <!-- Import control_xacro -->
-    <xacro:include filename="arm_description.ros2_control.xacro" />
+    <!-- <xacro:include filename="arm_description.ros2_control.xacro" /> -->
 
 
-    <xacro:arm_description_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/>
+    <!-- <xacro:arm_description_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/> -->
 
 </robot>

@@ -7,10 +7,10 @@
     <xacro:desk />
     <!-- <xacro:pallet /> -->
 
-    <joint name="block_arm_joint" type="fixed">
+    <!-- <joint name="block_arm_joint" type="fixed">
     <origin xyz="0 0 0.07" rpy="0 0 0"/>
     <parent link="bolck_link"/>
     <child link="base_link"/>
-    </joint>
+    </joint> -->
 
 </robot>

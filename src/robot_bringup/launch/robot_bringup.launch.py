@@ -20,7 +20,7 @@ def generate_launch_description():
         get_package_share_directory("moveit_config")
     )
 
-    urdf_path = arm_description_share / "urdf" / "all.urdf.xacro"
+    urdf_path = arm_description_share / "urdf" / "arm.urdf.xacro"
     rviz_config_path = robot_bringup_share / "rviz" / "moveit.rviz"
     controllers_config_path = (
         robot_bringup_share / "config" / "ros2_controllers.yaml"
@@ -70,6 +70,36 @@ def generate_launch_description():
                 executable="rviz2",
                 output="screen",
                 arguments=["-d", str(rviz_config_path)],
+            ),
+            Node(
+                package="tf2_ros",
+                executable="static_transform_publisher",
+                name="world_to_base_link",
+                arguments=[
+                    "--x", "0.25",
+                    "--y", "0.02",
+                    "--z", "0.075",
+                    "--roll", "0.0",
+                    "--pitch", "0.0",
+                    "--yaw", "0.0",
+                    "--frame-id", "world",
+                    "--child-frame-id", "base_link",
+                ],
+            ),
+            Node(
+                package="tf2_ros",
+                executable="static_transform_publisher",
+                name="place_1_tf",
+                arguments=[
+                    "--x", "0.2294",
+                    "--y", "0.19",
+                    "--z", "0.478",
+                    "--roll", "0.0",
+                    "--pitch", "0.0",
+                    "--yaw", "1.5708",
+                    "--frame-id", "world",
+                    "--child-frame-id", "place_1",
+                ],
             ),
         ]
     )

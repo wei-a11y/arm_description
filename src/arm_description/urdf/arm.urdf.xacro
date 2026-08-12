@@ -5,7 +5,7 @@
 
 
 
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="arm_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find arm_description)/urdf/arm_description.ros2_control.xacro" />
   
   <link
