@@ -11,6 +11,9 @@
 #include <std_msgs/msg/color_rgba.hpp>
 #include <string>
 
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+
 bool loadMeshMessage(const std::string& resource, shape_msgs::msg::Mesh& mesh_message)
 {
     shapes::ShapePtr mesh_shape
@@ -167,19 +170,47 @@ int main(int argc, char **argv)
     arm.setPoseReferenceFrame("base_link");
     arm.setEndEffectorLink("wrist_link_3");
     arm.setStartStateToCurrentState();
-    arm.setNamedTarget("home");
 
-    // geometry_msgs::msg::Pose target_pose;
-    // target_pose.position.x = 0.4;
-    // target_pose.position.y = 0.0;
-    // target_pose.position.z = 0.4;
+    // 读取末端当前位姿，保持当前位置不变
+    geometry_msgs::msg::Pose target_pose =
+        arm.getCurrentPose("wrist_link_3").pose;
 
-    // target_pose.orientation.x = 0.0;
-    // target_pose.orientation.y = 0.0;
-    // target_pose.orientation.z = 0.0;
-    // target_pose.orientation.w = 1.0;
+    tf2::Quaternion current_orientation;
+    tf2::fromMsg(
+        target_pose.orientation,
+        current_orientation
+    );
 
-    // arm.setPoseTarget(target_pose, "wrist_link_3");
+    
+    // 相对于当前姿态绕 Y 轴旋转 0.1 rad
+    tf2::Quaternion delta_orientation;
+    delta_orientation.setRPY(0.0, 0.0, 0.0);
+
+    tf2::Quaternion target_orientation =
+        current_orientation * delta_orientation;
+
+    target_orientation.normalize();
+    // target_pose.orientation = tf2::toMsg(target_orientation);
+    target_pose.orientation.x = 0.0;
+    target_pose.orientation.y = 0.0;
+    target_pose.orientation.z = 0.0;
+    target_pose.position.x -= 0.0;
+    target_pose.position.y += 0.015;
+    target_pose.position.z -= 0.0;
+    bool target_success =
+        arm.setPoseTarget(target_pose, "wrist_link_3");
+
+    if (!target_success)
+    {
+        RCLCPP_ERROR(
+            node->get_logger(),
+            "Target pose is invalid"
+        );
+
+        rclcpp::shutdown();
+        spinner.join();
+        return 1;
+    }
 
     moveit::planning_interface::MoveGroupInterface::Plan plan_1;
 
