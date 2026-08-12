@@ -5,7 +5,7 @@
     <xacro:include filename="$(find arm_description)/urdf/pallet.urdf.xacro" />
 
     <xacro:desk />
-    <xacro:pallet />
+    <!-- <xacro:pallet /> -->
 
     <joint name="block_arm_joint" type="fixed">
     <origin xyz="0 0 0.07" rpy="0 0 0"/>
