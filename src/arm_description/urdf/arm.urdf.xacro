@@ -6,7 +6,18 @@
 
 
 <robot name="arm_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="use_gazebo" default="false" />
   <xacro:include filename="$(find arm_description)/urdf/arm_description.ros2_control.xacro" />
+
+  <!-- Anchor the simulated arm while keeping the normal MoveIt model unchanged. -->
+  <xacro:if value="$(arg use_gazebo)">
+    <link name="world" />
+    <joint name="gazebo_world_joint" type="fixed">
+      <origin xyz="-0.25 0.19 0.275" rpy="0 0 0" />
+      <parent link="world" />
+      <child link="base_link" />
+    </joint>
+  </xacro:if>
   
   <link
     name="base_link">
@@ -103,8 +114,8 @@
     <limit
       lower="-1.5708"
       upper="1.5708"
-      effort="0"
-      velocity="0" />
+      effort="50"
+      velocity="1.5" />
   </joint>
   <link
     name="arm_link_1">
@@ -161,8 +172,8 @@
     <limit
       lower="-2.6179938"
       upper="1.1"
-      effort="0"
-      velocity="0" />
+      effort="50"
+      velocity="1.5" />
   </joint>
   <link
     name="arm_link_2">
@@ -219,8 +230,8 @@
     <limit
       lower="-0.1"
       upper="2.8179938"
-      effort="0"
-      velocity="0" />
+      effort="50"
+      velocity="1.5" />
   </joint>
   <link
     name="wrist_link_1">
@@ -277,8 +288,8 @@
     <limit
       lower="-1.6"
       upper="1.6"
-      effort="0"
-      velocity="0" />
+      effort="50"
+      velocity="1.5" />
   </joint>
   <link
     name="wrist_link_2">
@@ -335,8 +346,8 @@
     <limit
       lower="-1.0"
       upper="1.0"
-      effort="0"
-      velocity="0" />
+      effort="50"
+      velocity="1.5" />
   </joint>
   <link
     name="wrist_link_3">
@@ -393,8 +404,8 @@
     <limit
       lower="-2.6179938"
       upper="2.6179938"
-      effort="0"
-      velocity="0" />
+      effort="50"
+      velocity="1.5" />
   </joint>
   <link
     name="camera_arm_link">
@@ -557,5 +568,65 @@
   </joint>
   <xacro:arm_description_ros2_control
   name="Arm"
-  initial_positions_file="" />
+  initial_positions_file=""
+  use_gazebo="$(arg use_gazebo)" />
+
+  <!-- REP-103 optical frame: z forward, x right, y down. -->
+  <link name="camera_optical_link" />
+  <joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679" />
+    <parent link="camera_arm_link" />
+    <child link="camera_optical_link" />
+  </joint>
+
+  <gazebo reference="camera_arm_link">
+    <sensor name="camera" type="camera">
+            <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>30.0</update_rate>
+
+      <!-- 相机相对 camera_arm_link 的位置和朝向，可按模型调整 -->
+      <pose>0 0 0 0 0 0</pose>
+
+      <camera name="camera">
+        <!-- 约 80 度水平视场角 -->
+        <horizontal_fov>1.3962634</horizontal_fov>
+
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+
+        <clip>
+          <near>0.05</near>
+          <far>10.0</far>
+        </clip>
+
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+
+      <plugin
+        name="camera_controller"
+        filename="libgazebo_ros_camera.so">
+        <camera_name>camera</camera_name>
+        <frame_name>camera_optical_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <xacro:if value="$(arg use_gazebo)">
+    <gazebo>
+      <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+        <robot_param>robot_description</robot_param>
+        <robot_param_node>robot_state_publisher</robot_param_node>
+        <parameters>$(find robot_bringup)/config/ros2_controllers.yaml</parameters>
+      </plugin>
+    </gazebo>
+  </xacro:if>
+
 </robot>

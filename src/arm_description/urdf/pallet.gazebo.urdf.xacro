@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="pallet">
+  <xacro:include filename="$(find arm_description)/urdf/pallet.urdf.xacro" />
+  <xacro:pallet attach_to_desk="false" />
+
+  <!-- Keep the planning-scene and Gazebo copies coincident. -->
+  <gazebo>
+    <static>true</static>
+  </gazebo>
+  <gazebo reference="pallet_link">
+  <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <gazebo reference="target_f_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference="target_b_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+</robot>

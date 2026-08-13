@@ -93,7 +93,7 @@ int main(int argc, char **argv)
 
     desk_pose.position.x = 0.0;
     desk_pose.position.y = 0.0;
-    desk_pose.position.z = 0.0;
+    desk_pose.position.z = 0.20;
 
     desk.meshes.push_back(desk_mesh);
     desk.mesh_poses.push_back(desk_pose);
@@ -195,7 +195,7 @@ int main(int argc, char **argv)
     target_pose.orientation.y = 0.0;
     target_pose.orientation.z = 0.0;
     target_pose.position.x -= 0.0;
-    target_pose.position.y += 0.015;
+    target_pose.position.y += 0.0;
     target_pose.position.z -= 0.0;
     bool target_success =
         arm.setPoseTarget(target_pose, "wrist_link_3");

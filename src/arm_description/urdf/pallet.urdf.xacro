@@ -3,7 +3,7 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:macro name="pallet">
+  <xacro:macro name="pallet" params="attach_to_desk:=true">
     <link
       name="pallet_link">
       <inertial>
@@ -150,18 +150,20 @@
       <axis
         xyz="0 1 0" />
     </joint>
-    <joint
-      name="pallet_desk_joint"
-      type="floating">
-      <origin
-        xyz="0 0 0.017"
-        rpy="0 0 0" />
-      <parent
-        link="place_1_link" />
-      <child
-        link="pallet_link" />
-      <axis
-        xyz="0 1 0" />
-    </joint>
+    <xacro:if value="${attach_to_desk}">
+      <joint
+        name="pallet_desk_joint"
+        type="floating">
+        <origin
+          xyz="0 0 0.017"
+          rpy="0 0 0" />
+        <parent
+          link="place_1_link" />
+        <child
+          link="pallet_link" />
+        <axis
+          xyz="0 1 0" />
+      </joint>
+    </xacro:if>
   </xacro:macro>
 </robot>

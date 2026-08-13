@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <xacro:macro name="arm_description_ros2_control" params="name initial_positions_file">
+    <xacro:macro name="arm_description_ros2_control" params="name initial_positions_file use_gazebo:=false">
 
         <ros2_control name="arm" type="system">
             <hardware>
-                <!-- By default, set up controllers for simulation. This won't work on real hardware -->
-                <plugin>mock_components/GenericSystem</plugin>
+                <xacro:if value="${use_gazebo}">
+                    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+                </xacro:if>
+                <xacro:unless value="${use_gazebo}">
+                    <plugin>mock_components/GenericSystem</plugin>
+                </xacro:unless>
             </hardware>
             <joint name="base_joint">
                 <command_interface name="position"/>
