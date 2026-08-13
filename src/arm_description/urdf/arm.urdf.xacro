@@ -13,7 +13,7 @@
   <xacro:if value="$(arg use_gazebo)">
     <link name="world" />
     <joint name="gazebo_world_joint" type="fixed">
-      <origin xyz="-0.25 0.19 0.275" rpy="0 0 0" />
+      <origin xyz="-0.25 0.1 0.275" rpy="0 0 0" />
       <parent link="world" />
       <child link="base_link" />
     </joint>
@@ -63,17 +63,17 @@
     name="shoulder_link">
     <inertial>
       <origin
-        xyz="2.844E-09 -0.0018983 0.088853"
+        xyz="1.3529E-07 0.00018621 0.085433"
         rpy="0 0 0" />
       <mass
-        value="0.96068" />
+        value="0.90979" />
       <inertia
-        ixx="0.0026125"
-        ixy="-5.235E-10"
-        ixz="-2.5725E-10"
-        iyy="0.002564"
-        iyz="0.00011151"
-        izz="0.0003434" />
+        ixx="0.0023552"
+        ixy="-7.2006E-11"
+        ixz="-6.7195E-09"
+        iyy="0.0023529"
+        iyz="-1.0941E-05"
+        izz="0.00028703" />
     </inertial>
     <visual>
       <origin
@@ -104,7 +104,7 @@
     type="revolute">
     <origin
       xyz="0 0 0.01"
-      rpy="0 0 3.1415926" />
+      rpy="0 0 0" />
     <parent
       link="base_link" />
     <child
@@ -112,8 +112,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-1.5708"
-      upper="1.5708"
+      lower="-1.57"
+      upper="1.57"
       effort="50"
       velocity="1.5" />
   </joint>
@@ -121,17 +121,17 @@
     name="arm_link_1">
     <inertial>
       <origin
-        xyz="3.99321170061077E-07 0.00243945434428174 0.10000016404977"
+        xyz="-0.12356 -0.0039664 0.008897"
         rpy="0 0 0" />
       <mass
-        value="1.49514311129629" />
+        value="1.7751" />
       <inertia
-        ixx="0.0092672086833684"
-        ixy="-3.45316524239455E-08"
-        ixz="2.128280625616E-08"
-        iyy="0.00917221220256816"
-        iyz="-8.41134008902218E-09"
-        izz="0.000552274337038071" />
+        ixx="0.00085052"
+        ixy="-0.00032685"
+        ixz="0.0010043"
+        iyy="0.014556"
+        iyz="2.3539E-05"
+        izz="0.014725" />
     </inertial>
     <visual>
       <origin
@@ -144,7 +144,7 @@
       <material
         name="">
         <color
-          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+          rgba="0.89804 0.91765 0.92941 1" />
       </material>
     </visual>
     <collision>
@@ -161,17 +161,17 @@
     name="shoulder_joint"
     type="revolute">
     <origin
-      xyz="0 -0.08 0.15"
-      rpy="0 1.0 0" />
+      xyz="0 0.065 0.15"
+      rpy="0 0 0" />
     <parent
       link="shoulder_link" />
     <child
       link="arm_link_1" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 -1 0" />
     <limit
-      lower="-2.6179938"
-      upper="1.1"
+      lower="-3.14"
+      upper="0.3"
       effort="50"
       velocity="1.5" />
   </joint>
@@ -179,17 +179,17 @@
     name="arm_link_2">
     <inertial>
       <origin
-        xyz="1.84935938307083E-07 -0.00142742297622724 0.0811160068194484"
+        xyz="0.069958 0.0038771 0.032231"
         rpy="0 0 0" />
       <mass
-        value="1.27771981813338" />
+        value="1.3456" />
       <inertia
-        ixx="0.00602979199459265"
-        ixy="1.99665710014809E-09"
-        ixz="3.61991807814648E-09"
-        iyy="0.00598043834668597"
-        iyz="-0.000147930160932861"
-        izz="0.000443651831504686" />
+        ixx="0.0016571"
+        ixy="0.00036495"
+        ixz="-0.0022841"
+        iyy="0.006418"
+        iyz="0.00016813"
+        izz="0.0055625" />
     </inertial>
     <visual>
       <origin
@@ -202,7 +202,7 @@
       <material
         name="">
         <color
-          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+          rgba="0.89804 0.91765 0.92941 1" />
       </material>
     </visual>
     <collision>
@@ -219,17 +219,17 @@
     name="arm_joint_12"
     type="revolute">
     <origin
-      xyz="0 0.08 0.2"
-      rpy="0 -2.5 0" />
+      xyz="-0.22941 -0.12 0.016519"
+      rpy="0 0 0" />
     <parent
       link="arm_link_1" />
     <child
       link="arm_link_2" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 -1 0" />
     <limit
-      lower="-0.1"
-      upper="2.8179938"
+      lower="-1.1"
+      upper="3.14"
       effort="50"
       velocity="1.5" />
   </joint>
@@ -237,17 +237,17 @@
     name="wrist_link_1">
     <inertial>
       <origin
-        xyz="0.00484427832761932 -1.19442283489963E-08 0.0299999925216045"
+        xyz="0.027247 -0.0048443 0.012553"
         rpy="0 0 0" />
       <mass
-        value="0.376466363968247" />
+        value="0.37647" />
       <inertia
-        ixx="0.00015732940102775"
-        ixy="2.42567535480483E-10"
-        ixz="9.20593423415752E-11"
-        iyy="0.00020045101820395"
-        iyz="1.04465083118944E-10"
-        izz="0.00015578083797655" />
+        ixx="0.0001636"
+        ixy="-1.8511E-10"
+        ixz="-1.6977E-05"
+        iyy="0.00015733"
+        iyz="1.8179E-10"
+        izz="0.00019263" />
     </inertial>
     <visual>
       <origin
@@ -260,7 +260,7 @@
       <material
         name="">
         <color
-          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+          rgba="0.89804 0.91765 0.92941 1" />
       </material>
     </visual>
     <collision>
@@ -277,17 +277,17 @@
     name="arm_wrist_joint"
     type="revolute">
     <origin
-      xyz="0 0 0.2"
-      rpy="0 0 -3.1415926" />
+      xyz="0.18165 0 0.083688"
+      rpy="0 0 0" />
     <parent
       link="arm_link_2" />
     <child
       link="wrist_link_1" />
     <axis
-      xyz="0 0 1" />
+      xyz="0.90824 0 0.41844" />
     <limit
-      lower="-1.6"
-      upper="1.6"
+      lower="-2.1"
+      upper="2.1"
       effort="50"
       velocity="1.5" />
   </joint>
@@ -295,17 +295,17 @@
     name="wrist_link_2">
     <inertial>
       <origin
-        xyz="-0.025 0.00476010124384936 -5.3487070328373E-10"
+        xyz="0.0047601 0.025 -5.3504E-10"
         rpy="0 0 0" />
       <mass
-        value="0.213833773430547" />
+        value="0.21383" />
       <inertia
-        ixx="5.90471340191189E-05"
-        ixy="-3.62696963816373E-20"
-        ixz="5.85438282709314E-12"
-        iyy="6.19132185170091E-05"
-        iyz="1.83189050496876E-12"
-        izz="7.58889080283275E-05" />
+        ixx="6.1913E-05"
+        ixy="-5.4902E-21"
+        ixz="1.8319E-12"
+        iyy="5.9047E-05"
+        iyz="-5.8544E-12"
+        izz="7.5889E-05" />
     </inertial>
     <visual>
       <origin
@@ -318,7 +318,7 @@
       <material
         name="">
         <color
-          rgba="0.176470588235294 1 0.529411764705882 1" />
+          rgba="0.17647 1 0.52941 1" />
       </material>
     </visual>
     <collision>
@@ -335,17 +335,17 @@
     name="wrist_joint_12"
     type="revolute">
     <origin
-      xyz="0.09 0 0.03"
-      rpy="0.2 0 0" />
+      xyz="0.027247 -0.09 0.012553"
+      rpy="0 0 0" />
     <parent
       link="wrist_link_1" />
     <child
       link="wrist_link_2" />
     <axis
-      xyz="1 0 0" />
+      xyz="0 -1 0" />
     <limit
-      lower="-1.0"
-      upper="1.0"
+      lower="-2.1"
+      upper="2.1"
       effort="50"
       velocity="1.5" />
   </joint>
@@ -353,21 +353,21 @@
     name="wrist_link_3">
     <inertial>
       <origin
-        xyz="0.0379528150536633 -0.00306208343475713 1.84945643244561E-08"
+        xyz="0.039939 -1.1351E-13 -1.7214E-13"
         rpy="0 0 0" />
       <mass
-        value="0.332413101297219" />
+        value="0.28823" />
       <inertia
-        ixx="0.000271281133244879"
-        ixy="-1.31842072075757E-05"
-        ixz="-4.53971642475216E-12"
-        iyy="0.000181807242336193"
-        iyz="-7.12639945244701E-12"
-        izz="0.000374581320728992" />
+        ixx="0.00024443"
+        ixy="1.3258E-19"
+        ixz="1.023E-20"
+        iyy="0.00016365"
+        iyz="7.1532E-20"
+        izz="0.00034072" />
     </inertial>
     <visual>
       <origin
-        xyz="-0.025 0 0"
+        xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
@@ -376,12 +376,12 @@
       <material
         name="">
         <color
-          rgba="1 0.270588235294118 0.733333333333333 1" />
+          rgba="1 0.27059 0.73333 1" />
       </material>
     </visual>
     <collision>
       <origin
-        xyz="-0.025 0 0"
+        xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
@@ -393,17 +393,17 @@
     name="wrist_joint_23"
     type="revolute">
     <origin
-      xyz="-0.025 0.06 0"
-      rpy="0 -1.57 0" />
+      xyz="0.03 0.025 0"
+      rpy="0 0 0" />
     <parent
       link="wrist_link_2" />
     <child
       link="wrist_link_3" />
     <axis
-      xyz="0 1 0" />
+      xyz="1 0 0" />
     <limit
-      lower="-2.6179938"
-      upper="2.6179938"
+      lower="-2.1"
+      upper="2.1"
       effort="50"
       velocity="1.5" />
   </joint>
@@ -411,16 +411,16 @@
     name="camera_arm_link">
     <inertial>
       <origin
-        xyz="0.00017826 0 0"
+        xyz="0.00017826 4.5935E-15 -1.3661E-13"
         rpy="0 0 0" />
       <mass
         value="0.0065484" />
       <inertia
         ixx="6.6534E-07"
-        ixy="-7.307E-23"
-        ixz="8.7818E-23"
+        ixy="-1.0694E-22"
+        ixz="6.6582E-23"
         iyy="3.9363E-07"
-        iyz="3.4427E-18"
+        iyz="3.4425E-18"
         izz="3.9363E-07" />
     </inertial>
     <visual>
@@ -451,7 +451,7 @@
     name="camera_arm_joint"
     type="fixed">
     <origin
-      xyz="0.0380000000000002 0 0"
+      xyz="0.063 0 0"
       rpy="0 0 0" />
     <parent
       link="wrist_link_3" />
@@ -464,17 +464,17 @@
     name="fork_link_L">
     <inertial>
       <origin
-        xyz="0.0838063514804203 -2.86229373536173E-17 -1.11022302462516E-16"
+        xyz="0.0617089046653031 -1.31922250901084E-13 -1.46049838889439E-13"
         rpy="0 0 0" />
       <mass
-        value="0.1017684" />
+        value="0.0693281249999999" />
       <inertia
-        ixx="9.16838352000001E-06"
-        ixy="1.22288262139147E-19"
-        ixz="-3.42386883861619E-20"
-        iyy="0.000344761994950531"
-        iyz="6.80000137608049E-22"
-        izz="0.000350846390950531" />
+        ixx="6.48397265624999E-06"
+        ixy="1.38540255329749E-20"
+        ixz="-1.57798644040829E-20"
+        iyy="0.00014643481569026"
+        iyz="-7.23277499173644E-22"
+        izz="0.00015034264381526" />
     </inertial>
     <visual>
       <origin
@@ -504,7 +504,7 @@
     name="fork_joint_L"
     type="fixed">
     <origin
-      xyz="0.039500000000001 -0.0544327264438395 0"
+      xyz="0.064500000000022 -0.0550000000000456 0"
       rpy="0 0 0" />
     <parent
       link="wrist_link_3" />
@@ -517,17 +517,17 @@
     name="fork_link_R">
     <inertial>
       <origin
-        xyz="0.083806 -8.3267E-17 1.1102E-16"
+        xyz="0.061708904665476 -9.50489686957212E-14 -1.31838984174237E-13"
         rpy="0 0 0" />
       <mass
-        value="0.10177" />
+        value="0.0693281250000001" />
       <inertia
-        ixx="9.1684E-06"
-        ixy="3.1477E-19"
-        ixz="-6.1321E-19"
-        iyy="0.00034476"
-        iyz="-1.8194E-21"
-        izz="0.00035085" />
+        ixx="6.48397265625001E-06"
+        ixy="1.26345997789801E-19"
+        ixz="-2.76932720286031E-19"
+        iyy="0.000146434815690261"
+        iyz="-1.49858148504424E-21"
+        izz="0.000150342643815261" />
     </inertial>
     <visual>
       <origin
@@ -540,7 +540,7 @@
       <material
         name="">
         <color
-          rgba="0.94118 0.92941 0 1" />
+          rgba="0.941176470588235 0.929411764705882 0 1" />
       </material>
     </visual>
     <collision>
@@ -557,7 +557,7 @@
     name="fork_joint_R"
     type="fixed">
     <origin
-      xyz="0.0395000000000003 0.0544327264438282 0"
+      xyz="0.0644999999998493 0.0549999999999174 0"
       rpy="0 0 0" />
     <parent
       link="wrist_link_3" />
@@ -626,6 +626,38 @@
         <robot_param_node>robot_state_publisher</robot_param_node>
         <parameters>$(find robot_bringup)/config/ros2_controllers.yaml</parameters>
       </plugin>
+    </gazebo>
+
+    <gazebo reference="base_link">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+
+    <gazebo reference="shoulder_link">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+    <gazebo reference="arm_link_1">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+    <gazebo reference="arm_link_2">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+    <gazebo reference="wrist_link_1">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+    <gazebo reference="wrist_link_2">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+    <gazebo reference="wrist_link_3">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+    <gazebo reference="camera_arm_link">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+    <gazebo reference="fork_link_L">
+      <material>Gazebo/Orange</material>
+    </gazebo>
+    <gazebo reference="fork_link_R">
+      <material>Gazebo/Orange</material>
     </gazebo>
   </xacro:if>
 

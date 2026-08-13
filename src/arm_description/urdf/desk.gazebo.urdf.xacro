@@ -29,4 +29,19 @@
   <gazebo reference="bolck_link">
     <material>Gazebo/Grey</material>
   </gazebo>
+
+  <gazebo reference="s_1_L">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="s_2_L">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="s_3_L">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="s_4_L">
+    <material>Gazebo/Blue</material>
+  </gazebo>
 </robot>

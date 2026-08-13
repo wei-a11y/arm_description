@@ -196,7 +196,7 @@ int main(int argc, char **argv)
     target_pose.orientation.z = 0.0;
     target_pose.position.x -= 0.0;
     target_pose.position.y += 0.0;
-    target_pose.position.z -= 0.0;
+    target_pose.position.z += 0.2;
     bool target_success =
         arm.setPoseTarget(target_pose, "wrist_link_3");
 

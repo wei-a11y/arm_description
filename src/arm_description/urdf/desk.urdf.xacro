@@ -8,17 +8,17 @@
       name="desk_link">
       <inertial>
         <origin
-          xyz="0.2633 -1.3648E-06 0.41758"
+          xyz="0.26330028162089 4.70495183503534E-05 0.41757762572946"
           rpy="0 0 0" />
         <mass
-          value="175.57" />
+          value="175.56800657568" />
         <inertia
-          ixx="15.115"
-          ixy="0.00035798"
-          ixz="0.18408"
-          iyy="15.317"
-          iyz="-3.2904E-05"
-          izz="11.622" />
+          ixx="15.1168947961039"
+          ixy="0.00340084138859789"
+          ixz="0.184078944732021"
+          iyy="15.3169560302271"
+          iyz="-0.000325921549303988"
+          izz="11.6240723783388" />
       </inertial>
       <visual>
         <origin
@@ -31,7 +31,7 @@
         <material
           name="">
           <color
-            rgba="0.79216 0.81961 0.93333 1" />
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
         </material>
       </visual>
       <collision>
@@ -48,16 +48,16 @@
       name="place_1_link">
       <inertial>
         <origin
-          xyz="2.7756E-17 0 0.001"
+          xyz="2.77555756156289E-17 0 0.00100000000000006"
           rpy="0 0 0" />
         <mass
           value="0.0162" />
         <inertia
-          ixx="1.094E-05"
-          ixy="1.6756E-21"
-          ixz="-6.3137E-38"
-          iyy="1.094E-05"
-          iyz="-4.191E-24"
+          ixx="1.09404E-05"
+          ixy="1.67558837898401E-21"
+          ixz="-6.3136903608619E-38"
+          iyy="1.09404E-05"
+          iyz="-4.19104843693536E-24"
           izz="2.187E-05" />
       </inertial>
       <visual>
@@ -71,7 +71,7 @@
         <material
           name="">
           <color
-            rgba="0.92549 0.92549 0.92549 1" />
+            rgba="0.925490196078431 0.925490196078431 0.925490196078431 1" />
         </material>
       </visual>
       <collision>
@@ -101,16 +101,16 @@
       name="place_2_link">
       <inertial>
         <origin
-          xyz="-2.7756E-17 -2.7756E-17 0.001"
+          xyz="-2.77555756156289E-17 -2.77555756156289E-17 0.00100000000000006"
           rpy="0 0 0" />
         <mass
           value="0.0162" />
         <inertia
-          ixx="1.094E-05"
-          ixy="5.1772E-22"
-          ixz="9.9262E-24"
-          iyy="1.094E-05"
-          iyz="2.9779E-23"
+          ixx="1.09404E-05"
+          ixy="5.17717379383552E-22"
+          ixz="9.92616735063634E-24"
+          iyy="1.09404E-05"
+          iyz="2.9778502051909E-23"
           izz="2.187E-05" />
       </inertial>
       <visual>
@@ -124,7 +124,7 @@
         <material
           name="">
           <color
-            rgba="0.92549 0.92549 0.92549 1" />
+            rgba="0.925490196078431 0.925490196078431 0.925490196078431 1" />
         </material>
       </visual>
       <collision>
@@ -207,7 +207,7 @@
       name="place_4_link">
       <inertial>
         <origin
-          xyz="0 -2.77555756156289E-17 0.001"
+          xyz="-2.77555756156289E-17 -2.77555756156289E-17 0.001"
           rpy="0 0 0" />
         <mass
           value="0.0162" />
@@ -263,14 +263,14 @@
           xyz="0 0 0.035"
           rpy="0 0 0" />
         <mass
-          value="0.7" />
+          value="0.700000000000001" />
         <inertia
-          ixx="0.00086917"
-          ixy="8.4279E-20"
-          ixz="1.4167E-21"
-          iyy="0.00086917"
-          iyz="5.1428E-36"
-          izz="0.0011667" />
+          ixx="0.000869166666666668"
+          ixy="-6.39679281766446E-21"
+          ixz="3.10876902924011E-20"
+          iyy="0.000869166666666668"
+          iyz="-1.65303893084384E-36"
+          izz="0.00116666666666667" />
       </inertial>
       <visual>
         <origin
@@ -283,7 +283,7 @@
         <material
           name="">
           <color
-            rgba="0.79216 0.81961 0.93333 1" />
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
         </material>
       </visual>
       <collision>
@@ -300,12 +300,224 @@
       name="block_joint"
       type="fixed">
       <origin
-        xyz="-0.25 0.0199999999999995 0.00499999999999999"
+        xyz="-0.25 0.19 0.005"
         rpy="0 0 0" />
       <parent
         link="desk_link" />
       <child
         link="bolck_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="s_1_L">
+      <inertial>
+        <origin
+          xyz="0.0061913 0.001 -0.00013874"
+          rpy="0 0 0" />
+        <mass
+          value="0.0053851" />
+        <inertia
+          ixx="3.8704E-06"
+          ixy="-2.0456E-21"
+          ixz="-2.3702E-07"
+          iyy="4.362E-06"
+          iyz="-8.4608E-22"
+          izz="4.9511E-07" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/s_1_L.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.97647 1 0.29412 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/s_1_L.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="s_1_J"
+      type="fixed">
+      <origin
+        xyz="0.40942 0.17674 0.65022"
+        rpy="0 0 1.5708" />
+      <parent
+        link="desk_link" />
+      <child
+        link="s_1_L" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="s_2_L">
+      <inertial>
+        <origin
+          xyz="-2.7756E-17 0.0025 0"
+          rpy="0 0 0" />
+        <mass
+          value="0.022" />
+        <inertia
+          ixx="2.1579E-05"
+          ixy="-2.5789E-20"
+          ixz="1.6E-06"
+          iyy="2.8667E-05"
+          iyz="5.062E-21"
+          izz="7.1792E-06" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/s_2_L.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.97647 1 0.29412 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/s_2_L.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="s_2_J"
+      type="fixed">
+      <origin
+        xyz="0.40942 -0.19 0.65"
+        rpy="0 0 1.5708" />
+      <parent
+        link="desk_link" />
+      <child
+        link="s_2_L" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="s_3_L">
+      <inertial>
+        <origin
+          xyz="-0.0036364 0.0025 0"
+          rpy="0 0 0" />
+        <mass
+          value="0.022" />
+        <inertia
+          ixx="2.1579E-05"
+          ixy="-2.4788E-20"
+          ixz="-2.3193E-21"
+          iyy="2.8376E-05"
+          iyz="-2.4423E-22"
+          izz="6.8883E-06" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/s_3_L.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.97647 1 0.29412 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/s_3_L.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="s_3_J"
+      type="fixed">
+      <origin
+        xyz="0.40942 0.19 0.25"
+        rpy="0 0 1.5708" />
+      <parent
+        link="desk_link" />
+      <child
+        link="s_3_L" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="s_4_L">
+      <inertial>
+        <origin
+          xyz="0.0055937 0.0025 0.0073044"
+          rpy="0 0 0" />
+        <mass
+          value="0.010984" />
+        <inertia
+          ixx="5.1745E-06"
+          ixy="-6.3019E-21"
+          ixz="2.0561E-07"
+          iyy="7.0614E-06"
+          iyz="7.693E-22"
+          izz="1.9327E-06" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/s_4_L.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.97647 1 0.29412 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://arm_description/meshes/desk/s_4_L.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="s_4_J"
+      type="fixed">
+      <origin
+        xyz="0.40942 -0.20085 0.235"
+        rpy="0 0 1.5708" />
+      <parent
+        link="desk_link" />
+      <child
+        link="s_4_L" />
       <axis
         xyz="0 0 0" />
     </joint>
