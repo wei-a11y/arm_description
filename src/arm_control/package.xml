@@ -3,7 +3,7 @@
 <package format="3">
   <name>arm_control</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>MoveIt-based topic control node for the arm.</description>
   <maintainer email="ahatte@163.com">zihan</maintainer>
   <license>Apache-2.0</license>
 
@@ -12,13 +12,19 @@
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
-  <exec_depend>rclcpp</exec_depend>
-  <exec_depend>moveit_ros_planning_interface</exec_depend>
-  <exec_depend>geometry_msgs</exec_depend>
-  <exec_depend>shape_msgs</exec_depend>
-  <exec_depend>moveit_msgs</exec_depend>
-  <exec_depend>geometric_shapes</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
+  <depend>rclcpp</depend>
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>geometry_msgs</depend>
+  <depend>shape_msgs</depend>
+  <depend>moveit_msgs</depend>
+  <depend>geometric_shapes</depend>
+  <depend>std_msgs</depend>
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>moveit_configs_utils</exec_depend>
+  <exec_depend>arm_description</exec_depend>
+  <exec_depend>moveit_config</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

@@ -6,7 +6,7 @@
 
 
 <robot name="arm_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:arg name="use_gazebo" default="false" />
+  <xacro:arg name="use_gazebo" default="true" />
   <xacro:include filename="$(find arm_description)/urdf/arm_description.ros2_control.xacro" />
 
   <!-- Anchor the simulated arm while keeping the normal MoveIt model unchanged. -->
@@ -504,7 +504,7 @@
     name="fork_joint_L"
     type="fixed">
     <origin
-      xyz="0.064500000000022 -0.0550000000000456 0"
+      xyz="0.064500000000022 -0.0450000000000456 0"
       rpy="0 0 0" />
     <parent
       link="wrist_link_3" />
@@ -557,7 +557,7 @@
     name="fork_joint_R"
     type="fixed">
     <origin
-      xyz="0.0644999999998493 0.0549999999999174 0"
+      xyz="0.0644999999998493 0.0459999999999174 0"
       rpy="0 0 0" />
     <parent
       link="wrist_link_3" />

@@ -5,7 +5,7 @@
 
   <!-- Keep the planning-scene and Gazebo copies coincident. -->
   <gazebo>
-    <static>true</static>
+    <static>false</static>
   </gazebo>
   <gazebo reference="pallet_link">
   <material>Gazebo/Grey</material>

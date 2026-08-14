@@ -7,7 +7,14 @@ from moveit_configs_utils import MoveItConfigsBuilder
 
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration("ust")
+    use_sim_time = LaunchConfiguration("use_sim_time")
+    target_pose_topic = LaunchConfiguration("target_pose_topic")
+    planning_group = LaunchConfiguration("planning_group")
+    pose_reference_frame = LaunchConfiguration("pose_reference_frame")
+    end_effector_link = LaunchConfiguration("end_effector_link")
+    velocity_scaling = LaunchConfiguration("max_velocity_scaling_factor")
+    acceleration_scaling = LaunchConfiguration("max_acceleration_scaling_factor")
+    add_scene_objects = LaunchConfiguration("add_scene_objects")
 
     moveit_config = (
         MoveItConfigsBuilder(
@@ -24,17 +31,48 @@ def generate_launch_description():
                 default_value="false",
                 description="Use the Gazebo simulation clock",
             ),
+            DeclareLaunchArgument(
+                "target_pose_topic",
+                default_value="~/target_pose",
+                description="PoseStamped command topic",
+            ),
+            DeclareLaunchArgument("planning_group", default_value="arm"),
+            DeclareLaunchArgument("pose_reference_frame", default_value="base_link"),
+            DeclareLaunchArgument("end_effector_link", default_value="wrist_link_3"),
+            DeclareLaunchArgument(
+                "max_velocity_scaling_factor", default_value="1.0"
+            ),
+            DeclareLaunchArgument(
+                "max_acceleration_scaling_factor", default_value="1.0"
+            ),
+            DeclareLaunchArgument("add_scene_objects", default_value="true"),
             Node(
                 package="arm_control",
                 executable="arm_control",
-                name="moveit_node",
+                name="arm_control",
                 output="screen",
                 parameters=[
                     {
                         "use_sim_time": ParameterValue(
                             use_sim_time,
                             value_type=bool,
-                        )
+                        ),
+                        "target_pose_topic": target_pose_topic,
+                        "planning_group": planning_group,
+                        "pose_reference_frame": pose_reference_frame,
+                        "end_effector_link": end_effector_link,
+                        "max_velocity_scaling_factor": ParameterValue(
+                            velocity_scaling,
+                            value_type=float,
+                        ),
+                        "max_acceleration_scaling_factor": ParameterValue(
+                            acceleration_scaling,
+                            value_type=float,
+                        ),
+                        "add_scene_objects": ParameterValue(
+                            add_scene_objects,
+                            value_type=bool,
+                        ),
                     },
                     moveit_config.robot_description,
                     moveit_config.robot_description_semantic,
