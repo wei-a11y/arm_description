@@ -6,11 +6,12 @@
 
 
 <robot name="arm_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:arg name="use_gazebo" default="true" />
+  <xacro:arg name="use_gazebo" default="false" />
+  <xacro:arg name="include_world_joint" default="true" />
   <xacro:include filename="$(find arm_description)/urdf/arm_description.ros2_control.xacro" />
 
-  <!-- Anchor the simulated arm while keeping the normal MoveIt model unchanged. -->
-  <xacro:if value="$(arg use_gazebo)">
+  <!-- Use the same fixed base transform in Gazebo, MoveIt, and robot_state_publisher. -->
+  <xacro:if value="$(arg include_world_joint)">
     <link name="world" />
     <joint name="gazebo_world_joint" type="fixed">
       <origin xyz="-0.25 0.1 0.275" rpy="0 0 0" />
@@ -655,9 +656,21 @@
     </gazebo>
     <gazebo reference="fork_link_L">
       <material>Gazebo/Orange</material>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+      <kp>1000000.0</kp>
+      <kd>100.0</kd>
+      <minDepth>0.001</minDepth>
+      <maxVel>0.01</maxVel>
     </gazebo>
     <gazebo reference="fork_link_R">
       <material>Gazebo/Orange</material>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+      <kp>1000000.0</kp>
+      <kd>100.0</kd>
+      <minDepth>0.001</minDepth>
+      <maxVel>0.01</maxVel>
     </gazebo>
   </xacro:if>
 

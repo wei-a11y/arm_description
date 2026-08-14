@@ -83,6 +83,7 @@ def generate_launch_description():
         arm_description_share / "urdf" / "pallet.gazebo.urdf.xacro"
     )
     rviz_config = robot_bringup_share / "rviz" / "moveit.rviz"
+    world_file = robot_bringup_share / "worlds" / "arm.world"
 
     # toxml() produces compact XML. This is required by the Humble
     # gazebo_ros2_control plugin when it forwards robot_description to its
@@ -106,7 +107,8 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             str(gazebo_ros_share / "launch" / "gazebo.launch.py")
-        )
+        ),
+        launch_arguments={"world": str(world_file)}.items(),
     )
 
     # The arm description is also the source used by spawn_entity.py.
@@ -216,6 +218,10 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             str(arm_control_share / "launch" / "arm_control.launch.py")
         ),
+        launch_arguments={
+            "use_sim_time": "true",
+            "sync_pallet_from_gazebo": "true",
+        }.items(),
         condition=IfCondition(start_arm_control),
     )
 
@@ -229,23 +235,13 @@ def generate_launch_description():
             "--frame-id", "world", "--child-frame-id", "desk_link",
         ],
     )
-    world_to_pallet = Node(
-        package="tf2_ros",
-        executable="static_transform_publisher",
-        name="world_to_pallet_link",
-        arguments=[
-            "--x", "0.2294165545", "--y", "0.19", "--z", "0.695",
-            "--roll", "0.0", "--pitch", "0.0", "--yaw", "1.5707963268",
-            "--frame-id", "world", "--child-frame-id", "pallet_link",
-        ],
-    )
     world_to_place_1 = Node(
         package="tf2_ros",
         executable="static_transform_publisher",
         name="world_to_place_1",
         arguments=[
-            "--x", "0.2294165545", 
-            "--y", "0.19", 
+            "--x", "0.2294165545",
+            "--y", "0.19",
             "--z", "0.678",
             "--roll", "0.0", "--pitch", "0.0", "--yaw", "1.5707963268",
             "--frame-id", "world", "--child-frame-id", "place_1",
@@ -314,7 +310,6 @@ def generate_launch_description():
             desk_state_publisher,
             pallet_state_publisher,
             world_to_desk,
-            world_to_pallet,
             world_to_place_1,
             spawn_desk,
         ]

@@ -15,6 +15,10 @@ def generate_launch_description():
     velocity_scaling = LaunchConfiguration("max_velocity_scaling_factor")
     acceleration_scaling = LaunchConfiguration("max_acceleration_scaling_factor")
     add_scene_objects = LaunchConfiguration("add_scene_objects")
+    sync_pallet_from_gazebo = LaunchConfiguration("sync_pallet_from_gazebo")
+    gazebo_pallet_link_name = LaunchConfiguration("gazebo_pallet_link_name")
+    pallet_object_id = LaunchConfiguration("pallet_object_id")
+    pallet_sync_rate = LaunchConfiguration("pallet_sync_rate")
 
     moveit_config = (
         MoveItConfigsBuilder(
@@ -46,6 +50,17 @@ def generate_launch_description():
                 "max_acceleration_scaling_factor", default_value="1.0"
             ),
             DeclareLaunchArgument("add_scene_objects", default_value="true"),
+            DeclareLaunchArgument(
+                "sync_pallet_from_gazebo",
+                default_value="false",
+                description="Synchronize the pallet pose from Gazebo link states",
+            ),
+            DeclareLaunchArgument(
+                "gazebo_pallet_link_name",
+                default_value="pallet::pallet_link",
+            ),
+            DeclareLaunchArgument("pallet_object_id", default_value="pallet"),
+            DeclareLaunchArgument("pallet_sync_rate", default_value="10.0"),
             Node(
                 package="arm_control",
                 executable="arm_control",
@@ -72,6 +87,16 @@ def generate_launch_description():
                         "add_scene_objects": ParameterValue(
                             add_scene_objects,
                             value_type=bool,
+                        ),
+                        "sync_pallet_from_gazebo": ParameterValue(
+                            sync_pallet_from_gazebo,
+                            value_type=bool,
+                        ),
+                        "gazebo_pallet_link_name": gazebo_pallet_link_name,
+                        "pallet_object_id": pallet_object_id,
+                        "pallet_sync_rate": ParameterValue(
+                            pallet_sync_rate,
+                            value_type=float,
                         ),
                     },
                     moveit_config.robot_description,
